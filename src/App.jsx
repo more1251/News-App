@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
-import Navbar from './Components/Navbar'
-import News from './Components/News'
+import './App.css';
+import Navbar from './Components/Navbar.jsx'
+import News from './Components/News.jsx'
+import About from './Components/About.jsx';
 import LoadingBar from 'react-top-loading-bar'
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
+
 
 function App (){
   const pageSize = 6;
@@ -20,6 +23,8 @@ function App (){
           <Navbar />
           <LoadingBar color='#0000FF' height={4} progress={progress} />
         <Routes>
+          <Route exact path="/about" element={<About/>} />
+
           <Route exact path="/" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country='in' category="general"/>} />
 
           <Route exact path="/business" element={<News setProgress={setProgress} apiKey={apiKey} key="business" pageSize={pageSize} country='in' category="business"/>} />
@@ -35,6 +40,8 @@ function App (){
           <Route exact path="/technology" element={<News setProgress={setProgress} apiKey={apiKey} key="technology" pageSize={pageSize} country='in' category="technology"/>} />
 
           <Route exact path="/general" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country='in' category="general"/>} />
+
+          
 
         </Routes>
       </Router>
